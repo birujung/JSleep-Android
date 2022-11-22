@@ -4,6 +4,8 @@ import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.request.*;
 import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.model.*;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import android.content.*;
 import android.view.View;
 import android.widget.*;
@@ -41,9 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Account account = requestAccount();
-                Intent move = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(move);
+                Account account = requestLogin();
             }
         });
     }
@@ -65,6 +65,28 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println("GAGAL");
                 System.out.println(t.toString());
                 Toast.makeText(mContext, "no Account id = 0", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return null;
+    }
+
+    public Account requestLogin() {
+        mApiService.login(username.getText().toString(), password.getText().toString()).enqueue(new Callback<Account>() {
+            @Override
+            public void onResponse(Call<Account> call, Response<Account> response) {
+                if(response.isSuccessful()) {
+                    MainActivity.loginAccount = response.body();
+                    System.out.println("ACCOUNT IS TRUE");
+                    Intent move = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(move);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Account> call, Throwable t) {
+                System.out.println("ACCOUNT ISN'T TRUE");
+                System.out.println(t.toString());
+                Toast.makeText(mContext, "WRONG ACCOUNT!", Toast.LENGTH_LONG).show();
             }
         });
         return null;

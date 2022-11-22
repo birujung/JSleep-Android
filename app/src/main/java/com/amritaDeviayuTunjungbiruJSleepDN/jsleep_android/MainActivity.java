@@ -20,6 +20,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 public class MainActivity<v> extends AppCompatActivity {
+    public static Account loginAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
