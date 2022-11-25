@@ -7,91 +7,576 @@
     android:background="@color/yellow_pallete"
     tools:context=".AboutMeActivity">
 
-    <TextView
-        android:id="@+id/judulAboutMe"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-500dp"
-        android:fontFamily="@font/poetsenone_regular"
-        android:text="Account Details"
-        android:textColor="@color/navy_pallete"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="64dp"
+        android:clipChildren="false"
+        android:labelFor="@id/judulAboutMe"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
-    <EditText
-        android:id="@+id/detailNama"
-        android:layout_width="321dp"
+        <TextView
+            android:id="@+id/judulAboutMe"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poetsenone_regular"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="Account Details"
+            android:textAlignment="center"
+            android:textColor="@color/navy_pallete"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="368dp"
         android:layout_height="46dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:fontFamily="@font/nunito_semibold"
-        android:inputType="textPersonName"
-        android:text="Name        Amrita Deviayu Tunjungbiru"
-        android:textSize="12sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judulAboutMe" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-    <EditText
-        android:id="@+id/detailEmail"
-        android:layout_width="321dp"
+        <TextView
+            android:id="@+id/abMeNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
+            android:foregroundGravity="center"
+            android:gravity="center|start"
+            android:includeFontPadding="false"
+            android:text="Name"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/navy_pallete"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/abMeResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
+            android:foregroundGravity="center"
+            android:gravity="center|end"
+            android:includeFontPadding="false"
+            android:text=":"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/navy_pallete"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/detailNama"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
+            android:inputType="textPersonName"
+            android:singleLine="false"
+            android:text="Amrita Deviayu Tunjungbiru"
+            android:textAlignment="textStart"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="368dp"
         android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:fontFamily="@font/nunito_semibold"
-        android:inputType="textPersonName"
-        android:text="Email                 tunjung888@gmail.com"
-        android:textSize="12sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailNama" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-    <EditText
-        android:id="@+id/detailBalance"
-        android:layout_width="321dp"
+        <TextView
+            android:id="@+id/abMeEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
+            android:foregroundGravity="center"
+            android:gravity="center|start"
+            android:includeFontPadding="false"
+            android:text="E-mail"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/navy_pallete"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/abMeResult2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
+            android:foregroundGravity="center"
+            android:gravity="center|end"
+            android:includeFontPadding="false"
+            android:text=":"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/navy_pallete"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/detailEmail"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="tunjung888@gmail.com"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="368dp"
         android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:fontFamily="@font/nunito_semibold"
-        android:inputType="textPersonName"
-        android:text="Balance                                                 0.0"
-        android:textSize="12sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-    <EditText
-        android:id="@+id/amountTextBox"
-        android:layout_width="169dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="100dp"
-        android:ems="10"
-        android:fontFamily="@font/nunito_semibold"
-        android:hint="Amount"
-        android:inputType="numberDecimal"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/abMeBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
+            android:foregroundGravity="center"
+            android:gravity="center|start"
+            android:includeFontPadding="false"
+            android:text="Balance"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/navy_pallete"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/abMeResult3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
+            android:foregroundGravity="center"
+            android:gravity="center|end"
+            android:includeFontPadding="false"
+            android:text=":"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/navy_pallete"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/detailBalance"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="0.0"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="368dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailBalance" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <EditText
+            android:id="@+id/amountTextBox"
+            android:layout_width="184dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:ems="10"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:hint="Amount"
+            android:inputType="numberDecimal"
+            android:textColor="@color/navy_pallete"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/topUpButton"
+            android:layout_width="104dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:backgroundTint="@color/navy_pallete"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:text="Top Up"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:cornerRadius="20dp" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/topUpButton"
-        android:layout_width="104dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginBottom="100dp"
+        android:id="@+id/registerRenterButton"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
         android:backgroundTint="@color/navy_pallete"
         android:fontFamily="@font/nunito_bold"
-        android:text="Top Up"
+        android:gravity="center"
+        android:text="Register Renter"
+        android:textAlignment="center"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailBalance" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view1"
+        android:layout_width="368dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:cardBackgroundColor="#D225285F"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerRenterButton">
+
+        <LinearLayout
+            android:id="@+id/linLayCard1"
+            android:layout_width="368dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_view1">
+
+            <TextView
+                android:id="@+id/renterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:foregroundGravity="center"
+                android:gravity="center|start"
+                android:includeFontPadding="false"
+                android:text="Name"
+                android:textAlignment="textStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/renterRes1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:foregroundGravity="center"
+                android:gravity="center|end"
+                android:includeFontPadding="false"
+                android:text=":"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/detailRenterName"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/nunito_semibold"
+                android:hint=" "
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linLayCard2"
+            android:layout_width="368dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="120dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linLayCard1">
+
+            <TextView
+                android:id="@+id/renterAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:foregroundGravity="center"
+                android:gravity="center|start"
+                android:includeFontPadding="false"
+                android:text="Address"
+                android:textAlignment="textStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/renterRes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:foregroundGravity="center"
+                android:gravity="center|end"
+                android:includeFontPadding="false"
+                android:text=":"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/detailRenterAddress"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/nunito_semibold"
+                android:hint=" "
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linLayCard3"
+            android:layout_width="368dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="192dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linLayCard2">
+
+            <TextView
+                android:id="@+id/renterPhoneNum"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:foregroundGravity="center"
+                android:gravity="center|start"
+                android:includeFontPadding="false"
+                android:text="Phone Number"
+                android:textAlignment="textStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/renterRes3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:foregroundGravity="center"
+                android:gravity="center|end"
+                android:includeFontPadding="false"
+                android:text=":"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/detailRenterPhoneNum"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/nunito_semibold"
+                android:hint=" "
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view2"
+        android:layout_width="368dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:cardBackgroundColor="#D225285F"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerRenterButton">
+
+        <LinearLayout
+            android:id="@+id/linLayCard2_1"
+            android:layout_width="368dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_view2">
+
+            <EditText
+                android:id="@+id/regisRenterName"
+                android:layout_width="184dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:fontFamily="@font/nunito_semibold"
+                android:gravity="center|start"
+                android:hint="Name"
+                android:inputType="text"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linLayCard2_2"
+            android:layout_width="368dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="80dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linLayCard2_1">
+
+            <EditText
+                android:id="@+id/regisRenterAddress"
+                android:layout_width="184dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:fontFamily="@font/nunito_semibold"
+                android:gravity="center|start"
+                android:hint="Address"
+                android:inputType="text"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linLayCard2_3"
+            android:layout_width="368dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="144dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linLayCard2_2">
+
+            <EditText
+                android:id="@+id/regisRenterPhoneNum"
+                android:layout_width="184dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:fontFamily="@font/nunito_semibold"
+                android:gravity="center|start"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linLayCard2_4"
+            android:layout_width="368dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="200dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linLayCard2_3">
+
+            <Button
+                android:id="@+id/newRegisRenterButton"
+                android:layout_width="104dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="45dp"
+                android:backgroundTint="@color/navy_pallete"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:text="Register"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/cancelRegisRentButton"
+                android:layout_width="104dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="75dp"
+                android:backgroundTint="@color/navy_pallete"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:text="Cancel"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:cornerRadius="20dp"
+                android:clickable="true"
+                android:onClick="newRegisterRenter"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

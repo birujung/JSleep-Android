@@ -20,7 +20,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 public class MainActivity<v> extends AppCompatActivity {
-    public static Account loginAccount;
+    public static Account accounts;
+    public static Renter renter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,10 @@ public class MainActivity<v> extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.person_button) {
             Intent move = new Intent(MainActivity.this, AboutMeActivity.class);
+            startActivity(move);
+            return true;
+        }else if (item.getItemId() == R.id.add_box_button) {
+            Intent move = new Intent(MainActivity.this, CreateRoomActivity.class);
             startActivity(move);
             return true;
         }

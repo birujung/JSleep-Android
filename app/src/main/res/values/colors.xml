@@ -7,6 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_pallete">#7A3773</color>
+    <color name="rosyred_pallete">#F17B64</color>
     <color name="navy_pallete">#25285F</color>
     <color name="yellow_pallete">#FFEFD053</color>
+    <color name="orange_pallete">#FFB75A</color>
+    <color name="pink_pallete">#C04F72</color>
 </resources>

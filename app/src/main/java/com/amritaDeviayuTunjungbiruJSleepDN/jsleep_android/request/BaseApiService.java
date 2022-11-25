@@ -12,14 +12,18 @@ public interface BaseApiService {
     Call<Account> getAccount (@Path("id") int id);
 
     @POST("account/login")
-    Call<Account> login(@Query("email") String email, @Query("password") String password);
+    Call<Account> login(@Query("email") String email,
+                        @Query("password") String password);
 
     @POST("account/register")
-    Call<Account> register(@Part("name") String name, @Part ("email") String email, @Part ("password") String password);
+    Call<Account> register(@Query("name") String name,
+                           @Query ("email") String email,
+                           @Query ("password") String password);
 
-//    @PUT("account/{id}")
-//    Call<Account> putAccount(@Path("id") int id);
-//
-//    @DELETE("account/{id}")
-//    Call<Account> deleteAccount(@Path("id") int id);
+    //Renter
+    @POST("account/{id}/registerRenter")
+    Call<Renter> registerRenter(@Path("id") int id,
+                                @Query("username") String username,
+                                @Query("address") String address,
+                                @Query("phoneNumber") String phoneNumber);
 }

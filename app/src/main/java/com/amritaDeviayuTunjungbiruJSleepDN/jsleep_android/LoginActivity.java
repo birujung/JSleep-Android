@@ -32,6 +32,13 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameTextBoxLogin);
         password = findViewById(R.id.passwordTextBoxLogin);
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Account account = requestLogin();
+            }
+        });
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,12 +47,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Account account = requestLogin();
-            }
-        });
     }
 
     protected Account requestAccount() {
@@ -75,10 +76,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Account> call, Response<Account> response) {
                 if(response.isSuccessful()) {
-                    MainActivity.loginAccount = response.body();
+                    MainActivity.accounts = response.body();
                     System.out.println("ACCOUNT IS TRUE");
                     Intent move = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(move);
+                    Toast.makeText(mContext, "Login Successfull", Toast.LENGTH_SHORT).show();
                 }
             }
 
