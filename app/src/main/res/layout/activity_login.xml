@@ -2,96 +2,97 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_Login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFD053"
+    android:background="@color/Neutral_Beige"
     android:backgroundTint="#00E91E63"
     android:backgroundTintMode="screen"
     android:padding="10dp"
     tools:context=".LoginActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="412dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="48dp"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="137dp"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/logo_jsleep_final" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="411dp"
-        android:layout_height="500dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+            android:id="@+id/logoFinal"
+            android:layout_width="125dp"
+            android:layout_height="118dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/logo_icon_hotel" />
 
         <TextView
             android:id="@+id/textViewJSleep"
             android:layout_width="167dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/poetsenone_regular"
+            android:layout_marginTop="-8dp"
+            android:fontFamily="@font/viga"
             android:gravity="center"
-            android:text="JSLEEP"
+            android:text="JSleep"
             android:textAlignment="center"
-            android:textColor="@color/navy_pallete"
+            android:textColor="@color/Reddish_Purple"
             android:textSize="50sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/usernameTextBoxLogin"
+            android:id="@+id/login_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="75dp"
             android:background="@drawable/input_bg"
+            android:drawableStart="@drawable/email_icon"
+            android:drawablePadding="15dp"
             android:ems="10"
-            android:fontFamily="@font/nunito_semibold"
-            android:hint="Username"
+            android:fontFamily="@font/viga"
+            android:hint="E-mail"
             android:inputType="textEmailAddress"
-            android:paddingStart="20dp"
+            android:paddingStart="15dp"
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
-            android:textColor="@color/navy_pallete" />
+            android:textColor="@color/Skin_Tone"
+            android:textColorHint="@color/Skin_Tone" />
 
         <EditText
-            android:id="@+id/passwordTextBoxLogin"
+            android:id="@+id/login_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/input_bg"
+            android:drawableStart="@drawable/password_icon"
+            android:drawablePadding="15dp"
             android:ems="10"
-            android:fontFamily="@font/nunito_semibold"
+            android:fontFamily="@font/viga"
             android:hint="Password"
             android:inputType="textPassword"
-            android:paddingStart="20dp"
+            android:paddingStart="15dp"
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
-            android:textColor="@color/navy_pallete" />
+            android:textColor="@color/Skin_Tone"
+            android:textColorHint="@color/Skin_Tone" />
 
         <Button
-            android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/login_button"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:backgroundTint="@color/navy_pallete"
-            android:fontFamily="@font/nunito_bold"
+            android:backgroundTint="@color/Reddish_Purple"
+            android:fontFamily="@font/viga"
             android:text="Login"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:cornerRadius="15dp" />
 
@@ -101,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/nunito_semibold"
+            android:fontFamily="@font/viga"
             android:text="Don't have account?"
             android:textAlignment="center"
             android:textSize="14sp" />
@@ -111,11 +112,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/nunito_bold"
+            android:layout_marginTop="-4dp"
+            android:fontFamily="@font/viga"
             android:text="Register Now!"
             android:textAlignment="center"
-            android:textColor="@color/navy_pallete"
+            android:textColor="@color/Reddish_Purple"
             android:textColorLink="#00FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />

@@ -19,16 +19,19 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try
+        {
+            this.getSupportActionBar().hide();
+        } catch (NullPointerException e){}
         setContentView(R.layout.activity_register);
 
         mApiService = UtilsApi.getApiService();
         mContext = this;
 
-
-        name = findViewById(R.id.nameRegister);
-        email = findViewById(R.id.emailRegister);
-        password = findViewById(R.id.passwordRegister);
-        Button register = findViewById(R.id.registerButton);
+        name = findViewById(R.id.register_name);
+        email = findViewById(R.id.register_email);
+        password = findViewById(R.id.register_password);
+        Button register = findViewById(R.id.register_button);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override

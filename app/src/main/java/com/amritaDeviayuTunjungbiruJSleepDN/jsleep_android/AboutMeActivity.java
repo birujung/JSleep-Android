@@ -1,5 +1,6 @@
 package com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.model.*;
@@ -15,15 +16,19 @@ import retrofit2.*;
 public class AboutMeActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
-    EditText name, email, balance, amount,
-            id, regisName, regisAddress, regisPhoneNumber,
+    EditText regisName, regisAddress, regisPhoneNumber;
+    TextView name, email, balance, amount,
             detailRegisName, detailRegisAddress, detailRegisPhoneNumber;
     Button topUp, registerRenter, newRegisRenter, cancel;
-    CardView cardView1, cardView2;
+    CardView cardDetail, cardRegis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try
+        {
+            this.getSupportActionBar().hide();
+        } catch (NullPointerException e){}
         setContentView(R.layout.activity_about_me);
 
         mApiService = UtilsApi.getApiService();
@@ -48,8 +53,8 @@ public class AboutMeActivity extends AppCompatActivity {
         cancel = findViewById(R.id.cancelRegisRentButton);
 
         //Card View
-        cardView1 = findViewById(R.id.card_view1);
-        cardView2 = findViewById(R.id.card_view2);
+        cardDetail = findViewById(R.id.cardViewDetail);
+        cardRegis = findViewById(R.id.cardViewRegis);
 
         //Register Renter
         regisName = findViewById(R.id.regisRenterName);
@@ -62,55 +67,58 @@ public class AboutMeActivity extends AppCompatActivity {
 
         if(account.renter == null) {
             registerRenter.setVisibility(View.VISIBLE);
-            cardView1.setVisibility(View.GONE);
-            cardView2.setVisibility(View.GONE);
+            cardDetail.setVisibility(View.GONE);
+            cardRegis.setVisibility(View.GONE);
+
+            registerRenter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    registerRenter.setVisibility(View.GONE);
+                    cardDetail.setVisibility(View.GONE);
+                    cardRegis.setVisibility(View.VISIBLE);
+
+                    newRegisRenter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            MainActivity.renter = requestRegisterRenter(MainActivity.accounts.id, regisName.getText().toString(),
+                                    regisAddress.getText().toString(), regisPhoneNumber.getText().toString());
+                            Intent move = new Intent(AboutMeActivity.this, AboutMeActivity.class);
+                            startActivity(move);
+                        }
+                    });
+                    cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent move = new Intent(AboutMeActivity.this, AboutMeActivity.class);
+                            startActivity(move);
+                            registerRenter.setVisibility(View.VISIBLE);
+                            cardDetail.setVisibility(View.GONE);
+                            cardRegis.setVisibility(View.GONE);
+
+                            detailRegisName.setText("");
+                            detailRegisAddress.setText("");
+                            detailRegisPhoneNumber.setText("");
+                        }
+                    });
+                }
+            });
         } else {
             registerRenter.setVisibility(View.GONE);
-            cardView1.setVisibility(View.VISIBLE);
-            cardView2.setVisibility(View.GONE);
+            cardDetail.setVisibility(View.VISIBLE);
+            cardRegis.setVisibility(View.GONE);
+
+            detailRegisName.setText(MainActivity.accounts.renter.username);
+            detailRegisAddress.setText(MainActivity.accounts.renter.address);
+            detailRegisPhoneNumber.setText(MainActivity.accounts.renter.phoneNumber);
         }
-
-        registerRenter.setOnClickListener(v -> {
-            registerRenter.setVisibility(View.GONE);
-            cardView1.setVisibility(View.GONE);
-            cardView2.setVisibility(View.VISIBLE);
-            Account acc = requestRegisterRenter();
-        });
-
-//        newRegisRenter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent move = new Intent(AboutMeActivity.this, LoginActivity.class);
-//                startActivity(move);
-//            }
-//        });
-        newRegisRenter.setOnClickListener(v -> {
-            Account acc = requestRegisterRenter();
-//            registerRenter.setVisibility(View.GONE);
-//            cardView1.setVisibility(View.VISIBLE);
-//            cardView2.setVisibility(View.GONE);
-//
-//            detailRegisName.setText(MainActivity.accounts.renter.username);
-//            detailRegisAddress.setText(MainActivity.accounts.renter.address);
-//            detailRegisPhoneNumber.setText(MainActivity.accounts.renter.phoneNumber);
-        });
-
-        cancel.setOnClickListener(v -> {
-            registerRenter.setVisibility(View.GONE);
-            cardView1.setVisibility(View.VISIBLE);
-            cardView2.setVisibility(View.GONE);
-            detailRegisName.setText("");
-            detailRegisAddress.setText("");
-            detailRegisPhoneNumber.setText("");
-        });
     }
 
-    public Account requestRegisterRenter() {
-        mApiService.registerRenter(Integer.parseInt(id.toString()), regisName.getText().toString(), regisAddress.getText().toString(), regisPhoneNumber.getText().toString()).enqueue(new Callback<Renter>() {
+    public Renter requestRegisterRenter(int id, String username, String address, String phoneNumber) {
+        mApiService.registerRenter(id, username, address, phoneNumber).enqueue(new Callback<Renter>() {
             @Override
             public void onResponse(Call<Renter> call, Response<Renter> response) {
                 if(response.isSuccessful()) {
-                    MainActivity.renter = response.body();
+                    MainActivity.accounts.renter = response.body();
                     System.out.println("ACCOUNT RENTER ADDED");
                     Intent move = new Intent(AboutMeActivity.this, AboutMeActivity.class);
                     startActivity(move);

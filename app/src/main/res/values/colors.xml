@@ -13,4 +13,12 @@
     <color name="yellow_pallete">#FFEFD053</color>
     <color name="orange_pallete">#FFB75A</color>
     <color name="pink_pallete">#C04F72</color>
+
+    //NEW PALLETE
+    <color name="Reddish_Purple">#883639</color>
+    <color name="Ash_Green_Blueish">#2F5763</color>
+    <color name="Neutral_Beige">#F0DAB1</color>
+    <color name="Skin_Tone">#DC9E79</color>
+    <color name="Greyish_Blue">#9EA7C8</color>
+    <color name="Light_Blue">#B1DAF0</color>
 </resources>

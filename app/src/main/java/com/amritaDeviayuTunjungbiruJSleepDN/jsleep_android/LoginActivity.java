@@ -4,8 +4,6 @@ import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.request.*;
 import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.model.*;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
-
 import android.content.*;
 import android.view.View;
 import android.widget.*;
@@ -22,15 +20,19 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try
+        {
+            this.getSupportActionBar().hide();
+        } catch (NullPointerException e){}
         setContentView(R.layout.activity_login);
 
         mApiService = UtilsApi.getApiService();
         mContext = this;
 
         TextView register = findViewById(R.id.registerLink);
-        Button login = findViewById(R.id.loginButton);
-        username = findViewById(R.id.usernameTextBoxLogin);
-        password = findViewById(R.id.passwordTextBoxLogin);
+        Button login = findViewById(R.id.login_button);
+        username = findViewById(R.id.login_email);
+        password = findViewById(R.id.login_password);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
