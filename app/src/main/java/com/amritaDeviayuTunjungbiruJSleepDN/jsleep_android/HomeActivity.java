@@ -30,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         } catch (NullPointerException e){}
         setContentView(R.layout.activity_home);
 
+        //Animated Backgroung
         ConstraintLayout layout = findViewById(R.id.layout_Home);
 
         AnimationDrawable animationDrawable = (AnimationDrawable)
@@ -38,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(3000);
         animationDrawable.start();
 
+        //Declaration
         login = findViewById(R.id.loginButtonHome);
         register = findViewById(R.id.registerButtonHome);
 
