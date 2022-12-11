@@ -161,7 +161,7 @@ public class AboutMeActivity extends AppCompatActivity {
     }
 
     /**
-     * This function is used to to request a new renter
+     * This function is used to request a new renter
      *
      * @param id  the id
      * @param username  the username

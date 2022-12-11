@@ -35,7 +35,7 @@
         <ListView
             android:id="@+id/listViewMain"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="450dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:cornerRadius="5dp"/>

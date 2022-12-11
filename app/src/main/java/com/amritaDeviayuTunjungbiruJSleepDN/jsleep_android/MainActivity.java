@@ -4,7 +4,6 @@ import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.model.*;
 import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.request.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.*;
-import androidx.core.widget.ListViewAutoScrollHelper;
 
 import java.io.*;
 import java.lang.*;
@@ -17,22 +16,70 @@ import android.widget.*;
 import android.util.*;
 import android.os.Bundle;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit2.*;
 
+/**
+ * The MainActivity class is an Android activity that represents the main page for the app.
+ *
+ * <p>It displays a list of rooms that are available for rent, and allows the user to navigate to different pages of the list
+ * or to view the details of a selected room. It also provides options for viewing the user's profile and creating a new room.</p>
+ * @author Amrita Deviayu Tunjungbiru
+ * @version 1.0
+ */
 public class MainActivity<v> extends AppCompatActivity {
+    /**
+     * The user's account information.
+     */
     public static Account accounts;
-    public static Renter renter;
-    BaseApiService mApiService;
-    Context mContext;
-    Button next, prev, go;
 
+    /**
+     * The user's renter information.
+     */
+    public static Renter renter;
+
+    /**
+     * A {@link BaseApiService} instance for making API requests.
+     */
+    BaseApiService mApiService;
+
+    /**
+     * The {@link Context} of the activity.
+     */
+    Context mContext;
+
+    /**
+     * Button to navigate to next or previous page.
+     */
+    Button next, prev;
+
+    /**
+     * The `ListView` used to display the list of rooms.
+     */
     ListView listView;
+
+    /**
+     * The list of rooms to be displayed.
+     */
     List<Room> activitylist;
+
+    /**
+     * An array to store a room list.
+     */
     public static ArrayList<Room> listRoom;
+
+    /**
+     * The index of the selected room.
+     */
     public static int roomIndex;
+
+    /**
+     * The current page of rooms being displayed.
+     */
     int current;
+
+    /**
+     * The number of the current page being displayed.
+     */
     int currentPage;
 
     @Override
@@ -108,6 +155,12 @@ public class MainActivity<v> extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * This function is used to get all available rooms.
+     *
+     * @param page amount of page wants to display
+     * @return Renter
+     */
     protected List<Room> getRoomList(int page) {
         mApiService.getAllRoom(page, 5).enqueue(new Callback<List<Room>>() {
             @Override

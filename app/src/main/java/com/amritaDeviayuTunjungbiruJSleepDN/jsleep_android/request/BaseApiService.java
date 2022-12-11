@@ -146,7 +146,7 @@ public interface BaseApiService {
      * @return {@code true} if the payment was accepted, {@code false} otherwise
      */
     @POST("payment/{id}/accept")
-    boolean accept(@Path("id") int id);
+    Call<Boolean> accept(@Path("id") int id);
 
     /**
      * Cancels the payment with the specified id.
@@ -155,7 +155,7 @@ public interface BaseApiService {
      * @return {@code true} if the payment was cancelled, {@code false} otherwise
      */
     @POST("payment/{id}/cancel")
-    boolean cancel(@Path("id") int id);
+    Call<Boolean> cancel(@Path("id") int id);
 
     /**
      * Submits the payment with the specified id.
@@ -164,5 +164,10 @@ public interface BaseApiService {
      * @return {@code true} if the payment was submitted, {@code false} otherwise
      */
     @POST("payment/{id}/submit")
-    boolean submit(@Path("id") int id);
+    Call<Boolean> submit(@Path("id") int id);
+
+    @GET("payment/getOrderForRenter")
+    Call<List<Payment>> getOrderForRenter(@Query("renterId") int renterId,
+                                          @Query("page") int page,
+                                          @Query("pageSize") int pageSize);
 }

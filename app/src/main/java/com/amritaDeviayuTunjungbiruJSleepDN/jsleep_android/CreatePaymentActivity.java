@@ -1,119 +1,110 @@
 package com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android;
 
-import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.model.*;
-import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.request.*;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.*;
-import androidx.core.widget.ListViewAutoScrollHelper;
 
-import java.io.*;
 import java.lang.*;
 import java.util.*;
-import java.text.*;
 
-import android.view.*;
+import android.app.DatePickerDialog;
 import android.content.*;
 import android.widget.*;
-import android.util.*;
 import android.os.Bundle;
 
-import org.w3c.dom.Text;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
+/**
+ * The CreatePaymentActivity class is an Android activity that represents a booking session.
+ *
+ * <p>It displays a calendar and allows the user to select a start and end date for the payment, and then
+ * navigates to the `PaymentDetailActivity` to display the payment details.</p>
+ * @author Amrita Deviayu Tunjungbiru
+ * @version 1.0
+ */
 public class CreatePaymentActivity extends AppCompatActivity {
-    BaseApiService mApiService;
-    Context mContext;
+    /**
+     * The calendar view used to display the dates for the payment.
+     */
+    private CalendarView calendarView;
 
-    Payment payment;
-    Button createPayment, cancelPayment;
-    EditText createFrom, createTo;
-    TextView totalPrice;
+    /**
+     * The end date for the payment, as a string in the format "yyyy-MM-dd".
+     */
+    public static String enddate;
+
+    /**
+     * The start date for the payment, as a string in the format "yyyy-MM-dd"
+     */
+    public static String startdate;
+
+    /**
+     * Button to continue to payment page
+     */
+    Button continueInvoiceButton;
+
+    /**
+     * The {@link EditText} where the user can enter the start date and the end date when book a room.
+     */
+    EditText checkInDate, checkOutDate;
+
+    /**
+     * The {@link DatePickerDialog} used to choose the range date for booking a room and for the payment.
+     */
+    DatePickerDialog datePickerDialogEnd,datePickerDialogStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try
-        {
+        try {
             this.getSupportActionBar().hide();
-        } catch (NullPointerException e){}
+        } catch (NullPointerException e) {}
         setContentView(R.layout.activity_create_payment);
 
-        mApiService = UtilsApi.getApiService();
-        mContext = this;
+        calendarView = findViewById(R.id.paymentdetail_calendar);
+        calendarView.setWeekDayTextAppearance(R.style.CalendarViewDateTextAppearance);
 
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date endDate = dateFormat.parse(PaymentDetailActivity.endDate);
-            Date startDate = dateFormat.parse(PaymentDetailActivity.startDate);
-            long diff = endDate.getTime() - startDate.getTime();
-            long diffDays = diff / (24 * 60 * 60 * 1000);
+        checkInDate = findViewById(R.id.paymentdetail_edittext_start);
+        checkOutDate = findViewById(R.id.paymentdetail_edittext_end);
 
-            //Deklarasi Button
-            createPayment = findViewById(R.id.create_payment_button);
-            cancelPayment = findViewById(R.id.cancel_create_payment_button);
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        datePickerDialogStart = new DatePickerDialog(CreatePaymentActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        checkInDate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                        startdate = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                    }
+                }, mYear, mMonth, mDay);
 
-            //Deklarasi EditText dan TextView
-            createFrom = findViewById(R.id.input_from);
-            createTo = findViewById(R.id.input_to);
-            totalPrice = findViewById(R.id.totalPrice);
+        datePickerDialogEnd = new DatePickerDialog(CreatePaymentActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        checkOutDate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                        enddate = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                    }
+                }, mYear, mMonth, mDay);
 
-            //Set Text untuk Booking
-            totalPrice.setText(String.valueOf(((double)diffDays) * DetailRoomActivity.room.price.price));
+        checkInDate.setOnClickListener(v -> {
+            datePickerDialogStart.show();
+        });
 
-            createPayment.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    System.out.println("Success!");
-                    Payment payment = createPayment(MainActivity.accounts.id, DetailRoomActivity.room.accountId, DetailRoomActivity.room.id, PaymentDetailActivity.startDate, PaymentDetailActivity.endDate);
-                    Intent move = new Intent(CreatePaymentActivity.this, PaymentDetailActivity.class);
-                    startActivity(move);
-                }
-            });
+        checkOutDate.setOnClickListener(v -> {
+            datePickerDialogEnd.show();
+        });
 
-            cancelPayment.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    System.out.println("Failed!");
-                    Intent move = new Intent(CreatePaymentActivity.this, MainActivity.class);
-                    startActivity(move);
-                }
-            });
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
+        continueInvoiceButton = findViewById(R.id.paymentdetail_button);
 
-    protected Payment createPayment(int buyerId, int renterId, int roomId, String from, String to){
-        System.out.println("Callback");
-        //Print all parameter
-        System.out.println(buyerId);
-        System.out.println(renterId);
-        System.out.println(roomId);
-        System.out.println(from);
-        System.out.println(to);
-
-        mApiService.createPayment(buyerId, renterId, roomId, from, to).enqueue(new Callback<Payment>() {
+        continueInvoiceButton.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
-            public void onResponse(@NonNull Call<Payment> call, @NonNull Response<Payment> response) {
-                if(response.isSuccessful()){
-                    System.out.println("Success to Pay");
-                    payment = response.body();
-                    System.out.println(payment);
-                    Intent move = new Intent(CreatePaymentActivity.this, MainActivity.class);
-                    startActivity(move);
-                    Toast.makeText(mContext, "Payment created", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Payment> call, @NonNull Throwable t) {
-                System.out.println("Failed to Pay");
-                Toast.makeText(mContext, "Create Payment Failed", Toast.LENGTH_SHORT).show();
+            public void onClick(android.view.View view) {
+                startdate = checkInDate.getText().toString();
+                enddate = checkOutDate.getText().toString();
+                Intent move = new Intent(CreatePaymentActivity.this, PaymentDetailActivity.class);
+                startActivity(move);
             }
         });
-        return null;
     }
 }
