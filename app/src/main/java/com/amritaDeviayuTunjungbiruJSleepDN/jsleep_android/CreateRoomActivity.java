@@ -7,6 +7,7 @@ import androidx.annotation.*;
 
 import java.io.*;
 import java.lang.*;
+import java.lang.Integer.*;
 import java.util.*;
 
 import android.content.res.ColorStateList;
@@ -18,6 +19,7 @@ import android.util.*;
 import android.os.Bundle;
 
 import retrofit2.*;
+import retrofit2.http.Query;
 
 public class CreateRoomActivity extends AppCompatActivity {
     EditText roomName, roomPrice, roomSize, roomAddress;
@@ -40,6 +42,9 @@ public class CreateRoomActivity extends AppCompatActivity {
             this.getSupportActionBar().hide();
         } catch (NullPointerException e){}
         setContentView(R.layout.activity_create_room);
+
+        mApiService = UtilsApi.getApiService();
+        mContext = this;
 
         //Spinner Object
         bedSpin = (Spinner) findViewById(R.id.bedSpinner);
@@ -65,10 +70,6 @@ public class CreateRoomActivity extends AppCompatActivity {
         submitRoom = findViewById(R.id.createRoomButton);
         cancel = findViewById(R.id.cancelCreateRoomButton);
 
-        //Set Color Untuk CheckBox
-        int red = Color.parseColor("#883639");
-        ColorStateList colorStateList = ColorStateList.valueOf(red);
-
         bedSpin.setAdapter(new ArrayAdapter<BedType>(this, android.R.layout.simple_spinner_item, BedType.values()));
         citySpin.setAdapter(new ArrayAdapter<City>(this, android.R.layout.simple_spinner_item, City.values()));
 
@@ -76,53 +77,58 @@ public class CreateRoomActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (ac.isChecked()) {
-                    facility.add(Facility.AC);
-                    ac.setButtonTintList(colorStateList);}
+                    facility.add(Facility.AC);}
                 if (refrig.isChecked()) {
-                    facility.add(Facility.Refrigerator);
-                    refrig.setButtonTintList(colorStateList);}
+                    facility.add(Facility.Refrigerator);}
                 if (wifi.isChecked()) {
-                    facility.add(Facility.WiFi);
-                    wifi.setButtonTintList(colorStateList);}
+                    facility.add(Facility.WiFi);}
                 if (bathtub.isChecked()) {
-                    facility.add(Facility.Bathtub);
-                    bathtub.setButtonTintList(colorStateList);}
+                    facility.add(Facility.Bathtub);}
                 if (balcony.isChecked()) {
-                    facility.add(Facility.Balcony);
-                    balcony.setButtonTintList(colorStateList);}
+                    facility.add(Facility.Balcony);}
                 if (restaurant.isChecked()) {
-                    facility.add(Facility.Restaurant);
-                    restaurant.setButtonTintList(colorStateList);}
+                    facility.add(Facility.Restaurant);}
                 if (pool.isChecked()) {
-                    facility.add(Facility.SwimmingPool);
-                    pool.setButtonTintList(colorStateList);}
+                    facility.add(Facility.SwimmingPool);}
                 if (fitness.isChecked()) {
-                    facility.add(Facility.FitnessCenter);
-                    fitness.setButtonTintList(colorStateList);}
+                    facility.add(Facility.FitnessCenter);}
 
                 String bed = bedSpin.getSelectedItem().toString();
                 String cityStr = citySpin.getSelectedItem().toString();
                 bedType = BedType.valueOf(bed);
                 city = City.valueOf(cityStr);
 
-                Integer priceObj = new Integer(roomPrice.getText().toString());
-                Integer sizeObj = new Integer(roomSize.getText().toString());
+                int priceInt = Integer.parseInt(roomPrice.getText().toString());
+                int sizeInt = Integer.parseInt(roomSize.getText().toString());
 
-                int priceInt = priceObj.parseInt(roomPrice.getText().toString());
-                int sizeInt = sizeObj.parseInt(roomSize.getText().toString());
+                submitRoom.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        requestRoom(MainActivity.accounts.id, roomName.getText().toString(), sizeInt, priceInt, facility, city, roomAddress.getText().toString(), bedType);
+                        Intent move = new Intent(CreateRoomActivity.this, MainActivity.class);
+                        startActivity(move);
+                    }
+                });
 
-                Room room = requestRoom(MainActivity.accounts.id, roomName.getText().toString(), sizeInt, priceInt, facility, city, roomAddress.getText().toString(), bedType);
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent move = new Intent(CreateRoomActivity.this, MainActivity.class);
+                        startActivity(move);
+                    }
+                });
             }
         });
     }
 
     protected Room requestRoom(int id, String name, int size, int price, ArrayList<Facility> facility, City city, String address, BedType bedType) {
-        mApiService.create(id, name, size, price, facility, city, address, bedType).enqueue(new Callback<Room>() {
+        System.out.println("Room ada gasi");
+        mApiService.createRoom(id, name, size, price, facility, city, address, bedType).enqueue(new Callback<Room>() {
             @Override
             public void onResponse(Call<Room> call, Response<Room> response) {
                 if (response.isSuccessful()) {
-                    Intent move = new Intent(CreateRoomActivity.this, MainActivity.class);
-                    startActivity(move);
+                    Room responseq = response.body();
+                    System.out.println(responseq.toString());
                     System.out.println("Berhasil!");
                     Toast.makeText(mContext, "Room Added Successfully!", Toast.LENGTH_LONG).show();
                 }

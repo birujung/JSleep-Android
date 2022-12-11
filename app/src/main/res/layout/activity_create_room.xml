@@ -116,7 +116,7 @@
                     android:layout_margin="4dp"
                     android:fontFamily="@font/viga"
                     android:text="AC"
-                    android:textColor="@color/Skin_Tone"
+                    android:textColor="@color/Reddish_Purple"
                     android:textSize="16sp"/>
 
                 <CheckBox
@@ -126,7 +126,7 @@
                     android:layout_margin="4dp"
                     android:fontFamily="@font/viga"
                     android:text="Refrigerator"
-                    android:textColor="@color/Skin_Tone"
+                    android:textColor="@color/Reddish_Purple"
                     android:textSize="16sp"/>
 
                 <CheckBox
@@ -136,7 +136,7 @@
                     android:layout_margin="4dp"
                     android:fontFamily="@font/viga"
                     android:text="Wi-Fi"
-                    android:textColor="@color/Skin_Tone"
+                    android:textColor="@color/Reddish_Purple"
                     android:textSize="16sp"/>
             </LinearLayout>
 
@@ -154,7 +154,7 @@
                     android:layout_margin="4dp"
                     android:fontFamily="@font/viga"
                     android:text="Bathtub"
-                    android:textColor="@color/Skin_Tone"
+                    android:textColor="@color/Reddish_Purple"
                     android:textSize="16sp"/>
 
                 <CheckBox
@@ -164,7 +164,7 @@
                     android:layout_margin="4dp"
                     android:fontFamily="@font/viga"
                     android:text="Balcony"
-                    android:textColor="@color/Skin_Tone"
+                    android:textColor="@color/Reddish_Purple"
                     android:textSize="16sp"/>
 
                 <CheckBox
@@ -174,7 +174,7 @@
                     android:layout_margin="4dp"
                     android:fontFamily="@font/viga"
                     android:text="Restaurant"
-                    android:textColor="@color/Skin_Tone"
+                    android:textColor="@color/Reddish_Purple"
                     android:textSize="16sp"/>
             </LinearLayout>
 
@@ -192,7 +192,7 @@
                     android:layout_margin="4dp"
                     android:fontFamily="@font/viga"
                     android:text="Swimming Pool"
-                    android:textColor="@color/Skin_Tone"
+                    android:textColor="@color/Reddish_Purple"
                     android:textSize="16sp"/>
 
                 <CheckBox
@@ -202,7 +202,7 @@
                     android:layout_margin="4dp"
                     android:fontFamily="@font/viga"
                     android:text="Fitness Center"
-                    android:textColor="@color/Skin_Tone"
+                    android:textColor="@color/Reddish_Purple"
                     android:textSize="16sp"/>
             </LinearLayout>
             

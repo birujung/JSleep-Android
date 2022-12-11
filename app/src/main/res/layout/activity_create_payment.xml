@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/Neutral_Beige"
+    tools:context=".CreatePaymentActivity">
+
+    <LinearLayout
+        android:id="@+id/layout_create_payment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/judulCreatePayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/viga"
+            android:foregroundGravity="center"
+            android:text="Want to Book with Us?"
+            android:textAlignment="center"
+            android:textColor="@color/Reddish_Purple"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/gambar_booking"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/book" />
+
+        <TextView
+            android:id="@+id/questionsPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:fontFamily="@font/viga"
+            android:text="Give us your plan date!"
+            android:textSize="20sp"
+            android:textColor="@color/Reddish_Purple"/>
+
+        <TextView
+            android:id="@+id/hintQuestionsPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:fontFamily="@font/viga"
+            android:text="Hint : Use 'year-month-date'!"
+            android:textSize="14sp"
+            android:textColor="@color/Skin_Tone"/>
+
+        <EditText
+            android:id="@+id/input_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:fontFamily="@font/viga"
+            android:hint="From"
+            android:inputType="text"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/Skin_Tone"
+            android:textColorHint="@color/Neutral_Beige" />
+
+        <EditText
+            android:id="@+id/input_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:fontFamily="@font/viga"
+            android:hint="To"
+            android:inputType="text"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/Skin_Tone"
+            android:textColorHint="@color/Neutral_Beige" />
+
+        <TextView
+            android:id="@+id/judulTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/viga"
+            android:text="The Total Price :"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/Ash_Green_Blueish"/>
+        <TextView
+            android:id="@+id/totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/input_bg_version_2"
+            android:ems="10"
+            android:fontFamily="@font/viga"
+            android:text="Total Price"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/Ash_Green_Blueish"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/create_payment_button"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@color/Skin_Tone"
+                android:fontFamily="@font/viga"
+                android:text="Pay Now"
+                android:textColor="@color/Another_Beige"
+                android:textSize="16sp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/cancel_create_payment_button"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="18dp"
+                android:backgroundTint="@color/Reddish_Purple"
+                android:fontFamily="@font/viga"
+                android:text="Later"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cornerRadius="20dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

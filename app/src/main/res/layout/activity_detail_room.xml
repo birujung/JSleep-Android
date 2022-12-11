@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|start"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="20dp"
             android:foregroundGravity="center"
             android:fontFamily="@font/viga"
@@ -77,12 +77,12 @@
             android:id="@+id/finalAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
+            android:layout_marginTop="-4dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/viga"
             android:text="Address"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="@color/Reddish_Purple"/>
 
         <TextView
@@ -98,28 +98,18 @@
             android:textColor="@color/Reddish_Purple"/>
 
         <TextView
-            android:id="@+id/finalBedType"
+            android:id="@+id/finalSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="@font/viga"
-            android:text="Bed Type"
-            android:textSize="16sp"
-            android:textColor="@color/Ash_Green_Blueish"/>
-
-        <TextView
-            android:id="@+id/finalSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:background="@drawable/cute_bg"
             android:fontFamily="@font/viga"
             android:text="Size"
             android:textSize="16sp"
-            android:textColor="@color/Ash_Green_Blueish"/>
+            android:textColor="@color/Ash_Green_Blueish"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/finalPrice"
@@ -128,10 +118,26 @@
             android:layout_marginTop="4dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:background="@drawable/cute_bg"
             android:fontFamily="@font/viga"
             android:text="Price"
             android:textSize="16sp"
-            android:textColor="@color/Ash_Green_Blueish"/>
+            android:textColor="@color/Ash_Green_Blueish"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/finalBedType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/cute_bg"
+            android:fontFamily="@font/viga"
+            android:text="Bed Type"
+            android:textColor="@color/Ash_Green_Blueish"
+            android:textSize="16sp"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/addFacility"
@@ -161,7 +167,7 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/viga"
                 android:text="AC"
-                android:textColor="@color/Reddish_Purple"
+                android:textColor="@color/Skin_Tone"
                 android:textSize="14sp"/>
 
             <CheckBox
@@ -171,7 +177,7 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/viga"
                 android:text="Refrigerator"
-                android:textColor="@color/Reddish_Purple"
+                android:textColor="@color/Skin_Tone"
                 android:textSize="14sp"/>
 
             <CheckBox
@@ -181,7 +187,7 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/viga"
                 android:text="Wi-Fi"
-                android:textColor="@color/Reddish_Purple"
+                android:textColor="@color/Skin_Tone"
                 android:textSize="14sp"/>
         </LinearLayout>
 
@@ -201,7 +207,7 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/viga"
                 android:text="Bathtub"
-                android:textColor="@color/Reddish_Purple"
+                android:textColor="@color/Skin_Tone"
                 android:textSize="14sp"/>
 
             <CheckBox
@@ -211,7 +217,7 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/viga"
                 android:text="Balcony"
-                android:textColor="@color/Reddish_Purple"
+                android:textColor="@color/Skin_Tone"
                 android:textSize="14sp"/>
 
             <CheckBox
@@ -221,7 +227,7 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/viga"
                 android:text="Restaurant"
-                android:textColor="@color/Reddish_Purple"
+                android:textColor="@color/Skin_Tone"
                 android:textSize="14sp"/>
         </LinearLayout>
 
@@ -241,7 +247,7 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/viga"
                 android:text="Swimming Pool"
-                android:textColor="@color/Reddish_Purple"
+                android:textColor="@color/Skin_Tone"
                 android:textSize="14sp"/>
 
             <CheckBox
@@ -251,16 +257,59 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/viga"
                 android:text="Fitness Center"
-                android:textColor="@color/Reddish_Purple"
+                android:textColor="@color/Skin_Tone"
                 android:textSize="14sp"/>
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="32dp"
+            android:id="@+id/gambarHotelRating"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="12dp"
             android:layout_gravity="end"
             app:srcCompat="@drawable/contoh_hotel" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bookButton"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="53dp"
+                android:gravity="center"
+                android:fontFamily="@font/viga"
+                android:text="Book"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textColor="@color/Another_Beige"
+                android:backgroundTint="@color/Skin_Tone"
+                app:cornerRadius="20dp"/>
+
+            <Button
+                android:id="@+id/cancelBookButton"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="12dp"
+                android:gravity="center"
+                android:fontFamily="@font/viga"
+                android:text="Cancel"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textColor="@color/Another_Beige"
+                android:backgroundTint="@color/Reddish_Purple"
+                app:cornerRadius="20dp"/>
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

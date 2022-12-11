@@ -11,13 +11,14 @@ import android.content.*;
 import android.widget.*;
 import android.os.Bundle;
 
+import okhttp3.ResponseBody;
 import retrofit2.*;
 
 public class AboutMeActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
     EditText regisName, regisAddress, regisPhoneNumber;
-    TextView name, email, balance, amount,
+    TextView name, email, balance, amount, logOut,
             detailRegisName, detailRegisAddress, detailRegisPhoneNumber;
     Button topUp, registerRenter, newRegisRenter, cancel;
     CardView cardDetail, cardRegis;
@@ -35,6 +36,7 @@ public class AboutMeActivity extends AppCompatActivity {
         mContext = this;
 
         Account account = MainActivity.accounts;
+        logOut = findViewById(R.id.logoutButton);
 
         //Account Details
         name = findViewById(R.id.detailNama);
@@ -44,7 +46,8 @@ public class AboutMeActivity extends AppCompatActivity {
 
         name.setText(MainActivity.accounts.name);
         email.setText(MainActivity.accounts.email);
-        balance.setText(String.valueOf(MainActivity.accounts.balance));
+        String balanceText = "Rp. " + String.valueOf(MainActivity.accounts.balance);
+        balance.setText(balanceText);
 
         //Button
         topUp = findViewById(R.id.topUpButton);
@@ -65,6 +68,12 @@ public class AboutMeActivity extends AppCompatActivity {
         detailRegisAddress = findViewById(R.id.detailRenterAddress);
         detailRegisPhoneNumber = findViewById(R.id.detailRenterPhoneNum);
 
+        topUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                topUp(MainActivity.accounts.id,Double.parseDouble(amount.getText().toString()));
+            }
+        });
         if(account.renter == null) {
             registerRenter.setVisibility(View.VISIBLE);
             cardDetail.setVisibility(View.GONE);
@@ -111,6 +120,14 @@ public class AboutMeActivity extends AppCompatActivity {
             detailRegisAddress.setText(MainActivity.accounts.renter.address);
             detailRegisPhoneNumber.setText(MainActivity.accounts.renter.phoneNumber);
         }
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent move = new Intent(AboutMeActivity.this, HomeActivity.class);
+                startActivity(move);
+            }
+        });
     }
 
     public Renter requestRegisterRenter(int id, String username, String address, String phoneNumber) {
@@ -131,6 +148,29 @@ public class AboutMeActivity extends AppCompatActivity {
                 System.out.println("ACCOUNT RENTER ALREADY REGISTERED");
                 System.out.println(t.toString());
                 Toast.makeText(mContext, "ACCOUNT RENTER ALREADY REGISTERED!", Toast.LENGTH_LONG).show();
+            }
+        });
+        return null;
+    }
+
+    protected Renter topUp(int id, double balance) {
+        mApiService.topUp(id, balance).enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful()) {
+                    // Update the TextView with the new balance
+                    MainActivity.accounts.balance = MainActivity.accounts.balance + balance;
+                    System.out.println("BALANCE ADDED");
+                    Toast.makeText(mContext, "Top Up Successful!", Toast.LENGTH_LONG).show();
+                    recreate();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                // Handle the failure
+                System.out.println("BALANCE FAILED TO ADD");
+                Toast.makeText(mContext, "Top Up Failed!", Toast.LENGTH_LONG).show();
             }
         });
         return null;

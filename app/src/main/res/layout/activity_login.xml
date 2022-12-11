@@ -61,7 +61,7 @@
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/Skin_Tone"
-            android:textColorHint="@color/Skin_Tone" />
+            android:textColorHint="@color/Neutral_Beige" />
 
         <EditText
             android:id="@+id/login_password"
@@ -81,7 +81,7 @@
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/Skin_Tone"
-            android:textColorHint="@color/Skin_Tone" />
+            android:textColorHint="@color/Neutral_Beige" />
 
         <Button
             android:id="@+id/login_button"

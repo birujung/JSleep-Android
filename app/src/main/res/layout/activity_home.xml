@@ -42,15 +42,25 @@
             android:textSize="60sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/loginButtonHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/Ash_Green_Blueish"
-            android:fontFamily="@font/viga"
-            android:text="LOGIN" />
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/loginButtonHome"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/Reddish_Purple"
+                android:fontFamily="@font/viga"
+                android:text="LOGIN"
+                android:textSize="16sp"
+                app:cornerRadius="16dp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/orDiHome"
@@ -59,16 +69,28 @@
             android:layout_gravity="center"
             android:fontFamily="@font/viga"
             android:text="OR"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
 
-        <Button
-            android:id="@+id/registerButtonHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/Ash_Green_Blueish"
-            android:fontFamily="@font/viga"
-            android:text="REGISTER" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/registerButtonHome"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/orange_pallete"
+                android:fontFamily="@font/viga"
+                android:text="REGISTER"
+                android:textColor="@color/Reddish_Purple"
+                android:textSize="16sp"
+                app:cornerRadius="15dp"/>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

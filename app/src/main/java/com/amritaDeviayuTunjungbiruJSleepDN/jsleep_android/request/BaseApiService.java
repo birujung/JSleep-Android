@@ -22,6 +22,10 @@ public interface BaseApiService {
                            @Query("email") String email,
                            @Query("password") String password);
 
+    @POST("account/{id}/topUp")
+    Call<Boolean> topUp(@Path("id") int id,
+                  @Query("balance") double balance);
+
     //Renter
     @POST("account/{id}/registerRenter")
     Call<Renter> registerRenter(@Path("id") int id,
@@ -32,15 +36,37 @@ public interface BaseApiService {
     //Room
     @GET("room/getAllRoom")
     Call<List<Room>> getAllRoom(@Query("page") int page,
-                          @Query("pageSize") int pageSize);
+                                @Query("pageSize") int pageSize);
+
+    @GET("room/getRoomByRenter")
+    Call<List<Room>> getRoomByRenter(@Path("id") int id,
+                                     @Query("page") int page,
+                                     @Query("pageSize") int pageSize);
 
     @POST("room/create")
-    Call<Room> create(@Path("id") int id,
-                            @Query("name") String name,
-                            @Query("size") int size,
-                            @Query("price") int price,
-                            @Query("facility") ArrayList<Facility> facility,
-                            @Query("city") City city,
-                            @Query("address") String address,
-                            @Query("bedType") BedType bedType);
+    Call<Room> createRoom(@Query("accountId") int accountId,
+                      @Query("name") String name,
+                      @Query("size") int size,
+                      @Query("price") int price,
+                      @Query("facility") ArrayList<Facility> facility,
+                      @Query("city") City city,
+                      @Query("address") String address,
+                      @Query("bedType") BedType bedType);
+
+    //Payment
+    @POST("payment/create")
+    Call<Payment> createPayment(@Query("buyerId") int buyerId,
+                         @Query("renterId") int renterId,
+                         @Query("roomId") int roomId,
+                         @Query("from") String from,
+                         @Query("to") String to);
+
+    @POST("payment/{id}/accept")
+    boolean accept(@Path("id") int id);
+
+    @POST("payment/{id}/cancel")
+    boolean cancel(@Path("id") int id);
+
+    @POST("payment/{id}/submit")
+    boolean submit(@Path("id") int id);
 }
