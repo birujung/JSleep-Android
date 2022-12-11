@@ -11,10 +11,27 @@ import android.os.Bundle;
 
 import retrofit2.*;
 
+/**
+ * The RegisterActivity class is an Android activity that represents the register session to JSleep.
+ *
+ * @author Amrita Deviayu Tunjungbiru
+ * @version 1.0
+ */
 public class RegisterActivity extends AppCompatActivity {
+    /**
+     * A {@link BaseApiService} instance for making API requests.
+     */
     BaseApiService mApiService;
-    EditText name, email, password;
+
+    /**
+     * The {@link Context} of the activity.
+     */
     Context mContext;
+
+    /**
+     * The {@link EditText} where the user can enter their desired name, email and password to make a new account.
+     */
+    EditText name, email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +58,12 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This function is used to request register to the server
+     *
+     * @return Account object
+     * @see Account
+     */
     protected Account requestRegister() {
         mApiService.register(name.getText().toString(), email.getText().toString(), password.getText().toString()).enqueue(new Callback<Account>() {
             @Override

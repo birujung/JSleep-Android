@@ -2,28 +2,41 @@ package com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.model.*;
-import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.request.*;
-import androidx.annotation.*;
 
-import java.io.*;
 import java.lang.*;
-import java.util.*;
+
 
 import android.view.*;
 import android.content.*;
 import android.content.res.*;
 import android.widget.*;
-import android.util.*;
 import android.os.Bundle;
 import android.graphics.*;
 
-import retrofit2.*;
-
+/**
+ * The DetailRoomActivity class is an Android activity that represents all of the information of what the room has.
+ *
+ * @author Amrita Deviayu Tunjungbiru
+ * @version 1.0
+ */
 public class DetailRoomActivity extends AppCompatActivity {
     public static Room room;
 
+    /**
+     * The {@link TextView} that displays the room's name, the room's city, the room's price,
+     * the room's address, and the room's bed type.
+     */
     TextView roomName, roomCity, roomPrice, roomSize, roomAddress, roomBedtype;
+
+    /**
+     * The {@link CheckBox} that displays the room's facility : ac, refrigerator, bath tub, balcony
+     * restaurant, pool, and fitness center.
+     */
     CheckBox ac, refrig, wifi, bathtub, balcony, restaurant, pool, fitness;
+
+    /**
+     * Button for booking a room and cancel the booking.
+     */
     Button bookButton, cancelBookButton;
 
     @Override
@@ -36,7 +49,7 @@ public class DetailRoomActivity extends AppCompatActivity {
         room = MainActivity.listRoom.get(MainActivity.roomIndex);
         setContentView(R.layout.activity_detail_room);
 
-        //Deklrasi
+        //Declaration
         roomName = findViewById(R.id.finalName);
         roomCity = findViewById(R.id.finalCity);
         roomPrice = findViewById(R.id.finalPrice);
@@ -68,7 +81,7 @@ public class DetailRoomActivity extends AppCompatActivity {
         System.out.println(finalBed);
         roomBedtype.setText(finalBed);
 
-        //Set Color Untuk CheckBox
+        //Set Color for CheckBox
         int red = Color.parseColor("#883639");
         ColorStateList colorStateList = ColorStateList.valueOf(red);
 

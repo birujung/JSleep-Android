@@ -3,18 +3,24 @@ package com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.text.*;
 import android.view.View;
 import android.widget.*;
 
+/**
+ * The HomeActivity class is an Android activity that represents the home screen of the JSleep app.
+ *
+ * @author Amrita Deviayu Tunjungbiru
+ * @version 1.0
+ */
 public class HomeActivity extends AppCompatActivity {
+    /**
+     * Button for login or register.
+     */
     Button login, register;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

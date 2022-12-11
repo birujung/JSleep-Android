@@ -21,17 +21,63 @@ import android.os.Bundle;
 import retrofit2.*;
 import retrofit2.http.Query;
 
+/**
+ * The CreateRoomActivity class is an Android activity that represents all of the information to create a new room.
+ *
+ * @author Amrita Deviayu Tunjungbiru
+ * @version 1.0
+ */
 public class CreateRoomActivity extends AppCompatActivity {
+    /**
+     * The {@link EditText} where the renter can enter the room's name, the room's price,
+     * the room's size, and the room's address.
+     */
     EditText roomName, roomPrice, roomSize, roomAddress;
+
+    /**
+     * The {@link Spinner} where the renter can choose between the provided selection.
+     */
     Spinner bedSpin, citySpin;
+
+    /**
+     * Button for submitting a new room and cancel it.
+     */
     Button submitRoom, cancel;
+
+    /**
+     * The {@link CheckBox} that the renter can choose from the room's facility- ac, refrigerator, bath tub,
+     * balcony, restaurant, pool, and fitness center- is provided with the room.
+     */
     CheckBox ac, refrig, wifi, bathtub, balcony, restaurant, pool, fitness;
+
+    /**
+     * Arraylist of facilities to store the facilities provided.
+     */
     ArrayList<Facility> facility = new ArrayList<Facility>();
+
+    /**
+     * Declaration from enum of BedType to use in the spinner.
+     */
     BedType bedType;
+
+    /**
+     * Declaration to use price.
+     */
     Price price;
+
+    /**
+     * Declaration from enum of City to use in the spinner.
+     */
     City city;
 
+    /**
+     * A {@link BaseApiService} instance for making API requests.
+     */
     BaseApiService mApiService;
+
+    /**
+     * The {@link Context} of the activity.
+     */
     Context mContext;
 
     @Override
@@ -70,6 +116,7 @@ public class CreateRoomActivity extends AppCompatActivity {
         submitRoom = findViewById(R.id.createRoomButton);
         cancel = findViewById(R.id.cancelCreateRoomButton);
 
+        //Set Adapter for Spinner
         bedSpin.setAdapter(new ArrayAdapter<BedType>(this, android.R.layout.simple_spinner_item, BedType.values()));
         citySpin.setAdapter(new ArrayAdapter<City>(this, android.R.layout.simple_spinner_item, City.values()));
 
@@ -121,6 +168,19 @@ public class CreateRoomActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This function is used to to request a new room.
+     *
+     * @param id  the id
+     * @param name  the name of the room
+     * @param size  the size of the room
+     * @param price  the price of the room
+     * @param facility the facilities provided with the room
+     * @param city  the city the room located to
+     * @param address   the address the room located to
+     * @param bedType the bed type the room has
+     * @return Room
+     */
     protected Room requestRoom(int id, String name, int size, int price, ArrayList<Facility> facility, City city, String address, BedType bedType) {
         System.out.println("Room ada gasi");
         mApiService.createRoom(id, name, size, price, facility, city, address, bedType).enqueue(new Callback<Room>() {

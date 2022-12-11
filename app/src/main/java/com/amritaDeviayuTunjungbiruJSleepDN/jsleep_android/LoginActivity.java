@@ -11,11 +11,27 @@ import android.os.Bundle;
 
 import retrofit2.*;
 
-
+/**
+ * The LoginActivity class is an Android activity that represents the login session to JSleep.
+ *
+ * @author Amrita Deviayu Tunjungbiru
+ * @version 1.0
+ */
 public class LoginActivity extends AppCompatActivity {
+    /**
+     * A {@link BaseApiService} instance for making API requests.
+     */
     BaseApiService mApiService;
-    EditText username, password;
+
+    /**
+     * The {@link Context} of the activity.
+     */
     Context mContext;
+
+    /**
+     * The {@link EditText} where the user can enter their email and password.
+     */
+    EditText username, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,28 +67,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    protected Account requestAccount() {
-        mApiService.getAccount(0).enqueue(new Callback<Account>() {
-            @Override
-            public void onResponse(Call<Account> call, Response<Account> response) {
-                if(response.isSuccessful()) {
-                    Account account;
-                    account = response.body();
-                    System.out.println("BERHASIL");
-                    System.out.println(account.toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Account> call, Throwable t) {
-                System.out.println("GAGAL");
-                System.out.println(t.toString());
-                Toast.makeText(mContext, "no Account id = 0", Toast.LENGTH_SHORT).show();
-            }
-        });
-        return null;
-    }
-
+    /**
+     * This function is used to request login to the server
+     *
+     * @return Account object
+     * @see Account
+     */
     public Account requestLogin() {
         mApiService.login(username.getText().toString(), password.getText().toString()).enqueue(new Callback<Account>() {
             @Override

@@ -1,6 +1,5 @@
 package com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.model.*;
@@ -11,16 +10,47 @@ import android.content.*;
 import android.widget.*;
 import android.os.Bundle;
 
-import okhttp3.ResponseBody;
 import retrofit2.*;
 
+/**
+ * The AboutMeActivity class is an Android activity that represents the account's of specific user.
+ *
+ * @author Amrita Deviayu Tunjungbiru
+ * @version 1.0
+ */
 public class AboutMeActivity extends AppCompatActivity {
+    /**
+     * A {@link BaseApiService} instance for making API requests.
+     */
     BaseApiService mApiService;
+
+    /**
+     * The {@link Context} of the activity.
+     */
     Context mContext;
+
+    /**
+     * The {@link EditText} where the user can enter the name, address, and phone number of a renter to register.
+     */
     EditText regisName, regisAddress, regisPhoneNumber;
+
+    /**
+     * The {@link TextView} that displays the user's name, user's email, user's balance,
+     * the amount the user wants to top up their account with, option for user to log out, and name,
+     * address, and phone number of the registered renter.
+     */
     TextView name, email, balance, amount, logOut,
             detailRegisName, detailRegisAddress, detailRegisPhoneNumber;
+
+    /**
+     * Button for topping up the user's account, registering a new renter, confirms the new renter,
+     * and cancelling the registration of the new renter.
+     */
     Button topUp, registerRenter, newRegisRenter, cancel;
+
+    /**
+     * {@link CardView} containing the user's account details and the form for registering new renter.
+     */
     CardView cardDetail, cardRegis;
 
     @Override
@@ -130,6 +160,15 @@ public class AboutMeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This function is used to to request a new renter
+     *
+     * @param id  the id
+     * @param username  the username
+     * @param address  the address
+     * @param phoneNumber  the phone number
+     * @return Renter
+     */
     public Renter requestRegisterRenter(int id, String username, String address, String phoneNumber) {
         mApiService.registerRenter(id, username, address, phoneNumber).enqueue(new Callback<Renter>() {
             @Override
@@ -153,6 +192,13 @@ public class AboutMeActivity extends AppCompatActivity {
         return null;
     }
 
+    /**
+     * This function is used to top up the user's balance
+     *
+     * @param id  the id
+     * @param balance the user's balance
+     * @return Renter
+     */
     protected Renter topUp(int id, double balance) {
         mApiService.topUp(id, balance).enqueue(new Callback<Boolean>() {
             @Override
