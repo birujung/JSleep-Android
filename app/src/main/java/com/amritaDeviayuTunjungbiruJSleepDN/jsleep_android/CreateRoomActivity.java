@@ -29,6 +29,16 @@ import retrofit2.http.Query;
  */
 public class CreateRoomActivity extends AppCompatActivity {
     /**
+     * A {@link BaseApiService} instance for making API requests.
+     */
+    BaseApiService mApiService;
+
+    /**
+     * The {@link Context} of the activity.
+     */
+    Context mContext;
+    
+    /**
      * The {@link EditText} where the renter can enter the room's name, the room's price,
      * the room's size, and the room's address.
      */
@@ -69,16 +79,6 @@ public class CreateRoomActivity extends AppCompatActivity {
      * Declaration from enum of City to use in the spinner.
      */
     City city;
-
-    /**
-     * A {@link BaseApiService} instance for making API requests.
-     */
-    BaseApiService mApiService;
-
-    /**
-     * The {@link Context} of the activity.
-     */
-    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
