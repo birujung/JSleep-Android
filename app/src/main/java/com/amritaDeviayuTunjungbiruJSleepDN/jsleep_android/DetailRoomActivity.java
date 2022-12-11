@@ -5,7 +5,6 @@ import com.amritaDeviayuTunjungbiruJSleepDN.jsleep_android.model.*;
 
 import java.lang.*;
 
-
 import android.view.*;
 import android.content.*;
 import android.content.res.*;
@@ -20,6 +19,9 @@ import android.graphics.*;
  * @version 1.0
  */
 public class DetailRoomActivity extends AppCompatActivity {
+    /**
+     * The renter's room information.
+     */
     public static Room room;
 
     /**
