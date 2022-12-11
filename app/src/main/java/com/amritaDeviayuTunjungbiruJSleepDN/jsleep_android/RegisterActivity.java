@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         mApiService = UtilsApi.getApiService();
         mContext = this;
 
+        //Declaration
         name = findViewById(R.id.register_name);
         email = findViewById(R.id.register_email);
         password = findViewById(R.id.register_password);
